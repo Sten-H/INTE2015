@@ -29,8 +29,8 @@ public class OrderTest {
 	
 	@Test
 	public void testCreateReceipt(){
-		//This should probably be moved to a setupd class or something.
-		Product p1 = new Prodcut("Catsup", 33);
+		//This should probably be moved to a setupd method or something.
+		Product p1 = new Product("Catsup", 33);
 		OrderLine ol1 = new OrderLine(p1, 2);
 		ArrayList<OrderLine> orderLineList = new ArrayList<>();
 		orderLineList.add(ol1);
