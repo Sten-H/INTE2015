@@ -1,3 +1,4 @@
+package Register;
 /**
  * An order is built up by multiple OrderLine classes,
  * one OrderLine for each type of product bought. The
@@ -28,5 +29,8 @@ public class OrderLine {
 	 */
 	public double getTotalPrice(){
 		return product.getPrice() * productAmount;
+	}
+	public String toString(){
+		return product.getName() + " : " + product.getPrice();  
 	}
 }
