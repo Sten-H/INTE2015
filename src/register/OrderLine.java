@@ -1,4 +1,4 @@
-package Register;
+package register;
 /**
  * An order is built up by multiple OrderLine classes,
  * one OrderLine for each type of product bought. The

@@ -5,8 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import Register.OrderLine;
-import Register.Product;
+import register.OrderLine;
+import register.Product;
 
 
 public class OrderLineTest {

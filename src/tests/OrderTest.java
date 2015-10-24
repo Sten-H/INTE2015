@@ -8,9 +8,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import Register.Product;
-import Register.OrderLine;
-import Register.Order;
+import register.Order;
+import register.OrderLine;
+import register.Product;
 
 
 public class OrderTest {
