@@ -15,4 +15,9 @@ public class DiscountManagerTest {
 		DiscountManager dm2 = DiscountManager.getInstance();
 		assertEquals(1, dm1.getInstanceCount(), 0);
 	}
+	@Test
+	public void testLoadingDiscounts(){
+		DiscountManager dm1 = DiscountManager.getInstance();
+		assertEquals(0, dm1.getDiscounts().size(), 0);
+	}
 }
