@@ -17,6 +17,13 @@ public class ProductTest {
 			assertEquals(45, p.getPrice(), 0);
 		}
 	
+		
+		@Test
+		public void testFirstConstructor2(){
+			Product p2 = new Product("soygurt", 123);
+			assertEquals("soygurt", p2.getName());		
+			assertEquals(123, p2.getPrice(), 0);	
+		}
 	
 
 }
