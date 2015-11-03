@@ -1,8 +1,13 @@
 package register;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.*;;
+
 
 /**
  * The DiscountManger class keeps tracks of all the discounts available. 
@@ -12,10 +17,21 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class DiscountManager {
 	private static DiscountManager instance = null;
 	private static int instanceCount = 0; //This exists only to be certain singleton pattern is working correctly
-	private ArrayList<String> discountList = new ArrayList<>(); //This will not be String later on.
+	private ArrayList<String> discountList = new ArrayList<String>(); //This will not be String later on.
 	private DiscountManager(){
 		instanceCount +=1; //Only used for testing.
-		loadDiscountsFromFile();
+		try {
+			discountList = loadDiscountsFromFile();
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public static DiscountManager getInstance(){
 		if(instance == null)
@@ -24,8 +40,11 @@ public class DiscountManager {
 		}
 		return instance;
 	}
-	private void loadDiscountsFromFile(){
-		
+	private ArrayList<String> loadDiscountsFromFile() throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		File f = new File("resources/discounts.json");
+		ArrayList<String> discounts = mapper.readValue(f, mapper.getTypeFactory().constructCollectionType(List.class, String.class));
+		return discounts;
 	}
 	
 	/**
