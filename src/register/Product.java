@@ -1,13 +1,18 @@
 package register;
 
 public class Product {
+	String name;
+	double price;
+	
 	public Product(String name, double price){
+		this.name = name;
+		this.price = price;
 	}
 	
 	public String getName(){
-		return "fejkon";
+		return name;
 	}
 	public double getPrice(){
-		return 45;
+		return price;
 	}
 }
