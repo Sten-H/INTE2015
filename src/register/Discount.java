@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class Discount {
 	
-	Date startDate;
-	Date endDate;
-	double discountAmount;
-	ArrayList<DiscountPair> discountPairList;
+	private Date startDate;
+	private Date endDate;
+	private double discountAmount;
+	private ArrayList<DiscountPair> discountPairList;
 	
 	public Discount(Date start, Date end, Double db, ArrayList<DiscountPair> dlist){
 		startDate = start;
