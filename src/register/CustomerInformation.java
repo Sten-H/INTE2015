@@ -11,6 +11,9 @@ public class CustomerInformation {
 		if (creditCardNumber.trim().length() < 11) 
 			throw new IllegalArgumentException("CreditCardNumber must contain at least 11 letters.");
 		
+		if (!creditCardNumber.trim().matches("[0-9]+")) 
+			throw new IllegalArgumentException("CreditCardNumber must contain at least 11 numbers.");
+		
 		this.creditCardNumber = creditCardNumber;
 		this.customerNumber = customerNumber;
 	}
