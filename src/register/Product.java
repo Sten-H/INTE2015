@@ -10,7 +10,7 @@ public class Product {
 			throw new IllegalArgumentException("Name must contain at least one letter.");
 		
 		if (name.length() > 15) 
-			throw new IllegalArgumentException("Name conatains too many letters.");
+			throw new IllegalArgumentException("Name contains too many letters.");
 		
 		this.name = name;
 		this.price = price;
