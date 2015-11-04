@@ -3,10 +3,11 @@ package register;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.*;
+import java.util.Random;
 
 
 /**
@@ -17,34 +18,48 @@ import com.fasterxml.jackson.databind.*;
 public class DiscountManager {
 	private static DiscountManager instance = null;
 	private static int instanceCount = 0; //This exists only to be certain singleton pattern is working correctly
-	private ArrayList<String> discountList = new ArrayList<String>(); //This will not be String later on.
+	private ArrayList<Discount> discountList = new ArrayList<>(); //This will not be String later on.
 	private DiscountManager(){
 		instanceCount +=1; //Only used for testing.
-		try {
-			discountList = loadDiscountsFromFile();
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		loadDiscounts();
 	}
 	public static DiscountManager getInstance(){
 		if(instance == null)
 		{
 			instance = new DiscountManager();
+			
 		}
 		return instance;
 	}
-	private ArrayList<String> loadDiscountsFromFile() throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		File f = new File("resources/discounts.json");
-		ArrayList<String> discounts = mapper.readValue(f, mapper.getTypeFactory().constructCollectionType(List.class, String.class));
-		return discounts;
+	
+	// This really would have been nicer if it read from a file, but I'll start with this more nasty faster way.
+	private void loadDiscounts() {
+		Calendar cal;
+		Date start;
+		Date end;
+		
+		cal = new GregorianCalendar();
+		cal.set(Calendar.YEAR, 2015);
+		cal.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
+		int startDays[] = {1, 4, 6, 10};
+		int endDays[] = {3, 6, 10, 15};
+		String products[] = {"Paj", "Tzay", "Gurka", "Glass"};
+		double discountAmount[] = {20.0, 14.3, 11.4, 4.5};
+		Discount d;
+		
+		for(int i = 0; i < startDays.length; i++){
+			cal.set(Calendar.DATE, startDays[i]);
+			start = cal.getTime();
+			cal.set(Calendar.DATE, endDays[i]);
+			end = cal.getTime();
+			//Create Discount Pair placeholder
+			ArrayList<DiscountPair> dlist = new ArrayList<DiscountPair>();
+			DiscountPair dp = new DiscountPair();
+			
+			dlist.add(dp);
+			d = new Discount(start, end, discountAmount[i], dlist);
+			discountList.add(d);
+		}
 	}
 	
 	/**
@@ -58,7 +73,7 @@ public class DiscountManager {
 	 * This exists only to test that the class
 	 * @return the discounts that are currently available in an array
 	 */
-	public ArrayList<String> getDiscounts(){
+	public ArrayList<Discount> getDiscounts(){
 		return discountList;
 	}
 }

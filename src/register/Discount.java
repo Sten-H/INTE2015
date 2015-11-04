@@ -33,4 +33,16 @@ public class Discount {
 	public ArrayList<DiscountPair> getDiscountPairList(){
 		return discountPairList;
 	}
+	
+	public boolean isValid(){
+		Date d = new Date();
+		if (startDate.compareTo(d) < 0 && endDate.compareTo(d) > 0)
+			return true;
+		else
+			return false;
+	}
+	
+	public String toString(){
+		return "[ " + startDate.toString() + ", " + endDate.toString() + ", " + discountAmount + " ]";
+	}
 }

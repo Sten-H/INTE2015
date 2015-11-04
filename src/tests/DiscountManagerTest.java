@@ -17,6 +17,7 @@ public class DiscountManagerTest {
 		assertEquals(1, dm1.getInstanceCount(), 0);
 		assertEquals(1, dm2.getInstanceCount(), 0);
 	}
+	
 	@Test
 	public void testLoadingDiscounts(){
 		//Pre-existing discounts get loaded from resources/discounts.json
