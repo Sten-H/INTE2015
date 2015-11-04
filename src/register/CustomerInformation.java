@@ -14,6 +14,9 @@ public class CustomerInformation {
 		if (!creditCardNumber.trim().matches("[0-9]+")) 
 			throw new IllegalArgumentException("CreditCardNumber must contain at least 11 numbers.");
 		
+		if (customerNumber < 1) 
+			throw new IllegalArgumentException("CustomerNumber can not be negative or zero");
+		
 		this.creditCardNumber = creditCardNumber;
 		this.customerNumber = customerNumber;
 	}

@@ -76,7 +76,7 @@ public class CustomerInformationTest {
 		@Test
 		public void testExceptionTooLowCustomerNumber(){
 			expectedException.expect(IllegalArgumentException.class);
-			expectedException.expectMessage("CustomerNumber can not be negative");
+			expectedException.expectMessage("CustomerNumber can not be negative or zero");
 			CustomerInformation cI = new CustomerInformation("1234567890000", -98);
 		}
 	
