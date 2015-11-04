@@ -24,6 +24,18 @@ public class ProductTest {
 			assertEquals("soygurt", p2.getName());		
 			assertEquals(123, p2.getPrice(), 0);	
 		}
+		
+		@Rule
+		public ExpectedException expectedException = ExpectedException.none(); 
+		
+		
+		//Test exceptions name
+		@Test
+		public void testExceptionTooShortName(){
+			expectedException.expect(IllegalArgumentException.class);
+		    expectedException.expectMessage("name must contain at least one letter.");
+			Product p = new Product("", 34);
+		}
 	
 
 }
