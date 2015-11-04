@@ -27,7 +27,13 @@ public class ProductTest {
 		
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none(); 
-		
+	
+	@Test
+	public void testExceptionNullName(){
+		expectedException.expect(NullPointerException.class);
+	    expectedException.expectMessage("Name can not be null.");
+	    Product p = new Product(null, 10);
+	}		
 		
 	//Test exceptions name
 	@Test
@@ -44,12 +50,7 @@ public class ProductTest {
 		Product p = new Product("abcdefghijklmnopqrst", 34);
 	}
 		
-	@Test
-	public void testExceptionNullName(){
-		expectedException.expect(NullPointerException.class);
-	    expectedException.expectMessage("Name can not be null.");
-	    Product p = new Product(null, 10);
-	}
+
 		
 	
 
