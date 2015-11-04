@@ -53,10 +53,15 @@ public class Discount {
 	
 	public boolean isValid(){
 		Date d = new Date();
+
 		if (startDate.before(d) && endDate.after(d))
 			return true;
 		if (Integer.parseInt(sdf.format(endDate)) - Integer.parseInt(sdf.format(d)) == 0)
 			return true;
 		return false;
+	}
+
+	public String toString(){
+		return "[ " + startDate.toString() + ", " + endDate.toString() + ", " + discountAmount + " ]";
 	}
 }
