@@ -40,7 +40,7 @@ public class ProductTest {
 		@Test
 		public void testExceptionTooLongName(){
 		expectedException.expect(IllegalArgumentException.class);
-	    expectedException.expectMessage("name conatains too many letters.");
+	    expectedException.expectMessage("Name conatains too many letters.");
 		Product p = new Product("abcdefghijklmnopqrst", 34);
 		}
 		
