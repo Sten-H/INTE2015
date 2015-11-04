@@ -2,6 +2,7 @@ package tests;
 import static org.junit.Assert.*;
 import register.Discount;
 import register.DiscountPair;
+import register.Product;
 
 import java.text.ParseException;
 import java.util.*;
@@ -25,7 +26,7 @@ public class DiscountTest {
 		start = cal.getTime();
 		end = cal.getTime();
 		db = (double) 1;
-		discp = new DiscountPair();
+		discp = new DiscountPair(new Product("A",10), 1);
 		dlist.add(discp);
 	}
 	
