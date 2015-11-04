@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import register.CustomerInformation;
-import register.Product;
+
 
 public class CustomerInformationTest {
 
@@ -15,15 +15,15 @@ public class CustomerInformationTest {
 	//Test constructors
 	@Test
 	public void testFirstConstructor(){
-		CustomerInformation cI = new CustomerInformation("1234567890", 3);
-		assertEquals("1234567890", cI.getCreditCardNumber());		
+		CustomerInformation cI = new CustomerInformation("12345678900", 3);
+		assertEquals("12345678900", cI.getCreditCardNumber());		
 		assertEquals(3, cI.getCustomerNumber(), 0);
 	}
 	
 	@Test
 	public void testFirstConstructor2(){
-		CustomerInformation cI = new CustomerInformation("0987654321", 98);
-		assertEquals("0987654321", cI.getCreditCardNumber());
+		CustomerInformation cI = new CustomerInformation("09876543211", 98);
+		assertEquals("09876543211", cI.getCreditCardNumber());
 		assertEquals(98, cI.getCustomerNumber(), 0);
 	}
 	
@@ -51,7 +51,7 @@ public class CustomerInformationTest {
 	@Test
 	public void testExceptionTooShortCreditCardNumber(){
 		expectedException.expect(IllegalArgumentException.class);
-		expectedException.expectMessage("Name must contain at least 11 letters.");
+		expectedException.expectMessage("CreditCardNumber must contain at least 11 letters.");
 		CustomerInformation cI = new CustomerInformation(" 3", 98);
 	}
 	

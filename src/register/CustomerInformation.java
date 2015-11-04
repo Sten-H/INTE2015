@@ -8,6 +8,9 @@ public class CustomerInformation {
 		if(creditCardNumber == null)
 			throw new NullPointerException("CreditCardNumber can not be null.");
 		
+		if (creditCardNumber.length() < 11) 
+			throw new IllegalArgumentException("CreditCardNumber must contain at least 11 letters.");
+		
 		this.creditCardNumber = creditCardNumber;
 		this.customerNumber = customerNumber;
 	}
