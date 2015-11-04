@@ -36,6 +36,14 @@ public class ProductTest {
 		    expectedException.expectMessage("Name must contain at least one letter.");
 			Product p = new Product("", 34);
 		}
+		
+		@Test
+		public void testExceptionTooLongName(){
+		expectedException.expect(IllegalArgumentException.class);
+	    expectedException.expectMessage("name conatains too many letters.");
+		Product p = new Product("abcdefghijklmnopqrst", 34);
+		}
+		
 	
 
 }
