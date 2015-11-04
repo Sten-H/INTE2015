@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import register.CustomerInformation;
+import register.Product;
 
 
 public class CustomerInformationTest {
@@ -28,7 +29,7 @@ public class CustomerInformationTest {
 	}
 	
 	
-	//Test exceptions name
+	//Test exceptions CreditCardNumber
 	
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none(); 
@@ -71,6 +72,13 @@ public class CustomerInformationTest {
 		
 	}
 	
+	//Test exceptions CustomerNumber 
+		@Test
+		public void testExceptionTooLowCustomerNumber(){
+			expectedException.expect(IllegalArgumentException.class);
+			expectedException.expectMessage("CustomerNumber can not be negative");
+			CustomerInformation cI = new CustomerInformation("1234567890000", -98);
+		}
 	
 	
 	
