@@ -4,7 +4,6 @@ import register.Discount;
 import register.DiscountPair;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.junit.Test;
@@ -33,13 +32,13 @@ public class DiscountTest {
 	@Test
 	public void testSimpleConstructor() throws ParseException{
 		setupSimpleConstructor();	
-		dlist.add(discp);
 		Discount d = new Discount(start, end, db, dlist);
 		assertEquals(d.getStartDate(), start);
 		assertEquals(d.getEndDate(), end);
 		assertEquals(d.getDiscountAmount(), 1,0);
 		assertEquals(d.getDiscountPairList(), dlist);
 	}
+	
 	
 	//below are the tests for the constructor arguments
 	
@@ -100,5 +99,24 @@ public class DiscountTest {
 		setupSimpleConstructor();
 		dlist = null;
 		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	
+	
+	//tests for the isValid method
+	@Test
+	public void testDiscountValid(){
+		setupSimpleConstructor();
+		cal.set(Calendar.YEAR, 2115);
+		end = cal.getTime();
+		Discount d = new Discount(start, end, db, dlist);
+		assertTrue(d.isValid());
+	}
+	
+	@Test
+	public void testDiscountInvalid(){
+		setupSimpleConstructor(); //this sets both start and end to 2015-01-01, thus making the discount invalid
+		Discount d = new Discount(start, end, db, dlist);
+		assertFalse(d.isValid());
 	}
 }
