@@ -5,6 +5,9 @@ public class CustomerInformation {
 	int customerNumber;
 
 	public CustomerInformation(String creditCardNumber, int customerNumber){
+		if(creditCardNumber == null)
+			throw new NullPointerException("CreditCardNumber can not be null.");
+		
 		this.creditCardNumber = creditCardNumber;
 		this.customerNumber = customerNumber;
 	}
