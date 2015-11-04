@@ -41,12 +41,15 @@ public class DiscountManager {
 		cal = new GregorianCalendar();
 		cal.set(Calendar.YEAR, 2015);
 		cal.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
+		
+		//Values for multiple discounts
 		int startDays[] = {1, 4, 6, 10};
 		int endDays[] = {3, 6, 10, 15};
 		String products[] = {"Paj", "Tzay", "Gurka", "Glass"};
 		double discountAmount[] = {20.0, 14.3, 11.4, 4.5};
 		Discount d;
 		
+		//Create discounts
 		for(int i = 0; i < startDays.length; i++){
 			cal.set(Calendar.DATE, startDays[i]);
 			start = cal.getTime();
@@ -60,6 +63,24 @@ public class DiscountManager {
 			d = new Discount(start, end, discountAmount[i], dlist);
 			discountList.add(d);
 		}
+	}
+
+	/**
+	 * getValidDiscounts vill return an arraylist of discounts
+	 * that are applicable derived from the actual products that
+	 * are being bought.
+	 * @param orders are the products being bought
+	 * @return an arraylist of applicable discounts
+	 */
+	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orders){
+		return null;
+	}
+	/**
+	 * This is purely for testing, manually set available discounts.
+	 * @param discounts are the available discounts
+	 */
+	public void setDiscounts(ArrayList<Discount> discounts){
+		discountList = discounts;
 	}
 	
 	/**
