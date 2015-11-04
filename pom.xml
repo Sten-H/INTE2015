@@ -3,7 +3,16 @@
   <groupId>INTE2015</groupId>
   <artifactId>INTE2015</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <build>
+  <name>Register-core</name>
+  <packaging>jar</packaging>
+  <distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+    </distributionManagement>
+    <build>
   	<testSourceDirectory>src/tests</testSourceDirectory>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -29,7 +38,7 @@
             <version>2.18</version>
         </plugin>
     </plugins>
-  </build>
+    </build>
   <dependencies>
   	<dependency>
   		<groupId>junit</groupId>
