@@ -114,9 +114,28 @@ public class DiscountTest {
 	}
 	
 	@Test
-	public void testDiscountInvalid(){
+	public void testDiscountExpired(){
 		setupSimpleConstructor(); //this sets both start and end to 2015-01-01, thus making the discount invalid
 		Discount d = new Discount(start, end, db, dlist);
 		assertFalse(d.isValid());
+	}
+	
+	@Test
+	public void testDiscountNotYetValid(){
+		setupSimpleConstructor();
+		cal.set(Calendar.YEAR, 2115);
+		start = cal.getTime();
+		end = cal.getTime();
+		Discount d = new Discount(start, end, db, dlist);
+		assertFalse(d.isValid());
+	}
+	
+	@Test
+	public void testValidSameDay(){
+		setupSimpleConstructor();
+		start = new Date();
+		end = new Date();
+		Discount d = new Discount(start, end, db, dlist);
+		assertTrue(d.isValid());
 	}
 }

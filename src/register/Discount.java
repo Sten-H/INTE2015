@@ -1,7 +1,9 @@
 package register;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 
 
 
@@ -11,6 +13,7 @@ public class Discount {
 	private Date endDate;
 	private double discountAmount;
 	private ArrayList<DiscountPair> discountPairList;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	
 	public Discount(Date start, Date end, Double db, ArrayList<DiscountPair> dlist){
 		if (dlist == null)
@@ -50,9 +53,10 @@ public class Discount {
 	
 	public boolean isValid(){
 		Date d = new Date();
-		if (startDate.compareTo(d) < 0 && endDate.compareTo(d) > 0)
+		if (startDate.before(d) && endDate.after(d))
 			return true;
-		else
-			return false;
+		if (Integer.parseInt(sdf.format(endDate)) - Integer.parseInt(sdf.format(d)) == 0)
+			return true;
+		return false;
 	}
 }
