@@ -43,24 +43,30 @@ public class CustomerInformationTest {
 	    CustomerInformation cI = new CustomerInformation(null, 98);
 	}		
 	
-	/*there are maaaaany things to be tested if we wanna to this as real as possible.. 
+	/*there are maaaaany things to be tested if we wanna do this as real as possible.. 
 	 * but that would be impossible so for now I'm just testing that there are at least
-	 * 11 letters.. (the smallest amount if you use this testtabel 
+	 * 11 letters and maximum 16.. (the smallest amount if you use this testtabel 
 	 * https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm) 
 
 */
 	@Test
 	public void testExceptionTooShortCreditCardNumber(){
 		expectedException.expect(IllegalArgumentException.class);
-		expectedException.expectMessage("CreditCardNumber must contain at least 11 letters.");
-		CustomerInformation cI = new CustomerInformation(" 3", 98);
+		expectedException.expectMessage("CreditCardNumber must contain at least 11 numbers.");
+		CustomerInformation cI = new CustomerInformation("3", 98);
 	}
 	
+	@Test
+	public void testExceptionTooLongCreditCardNumber(){
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("CreditCardNumber must contain a maximum of 16 numbers.");
+		CustomerInformation cI = new CustomerInformation("1234567890987654321", 98);
+	}
 	
 	@Test
 	public void testExceptionTrimCreditCardNumber(){
 		expectedException.expect(IllegalArgumentException.class);
-		expectedException.expectMessage("CreditCardNumber must contain at least 11 letters.");
+		expectedException.expectMessage("CreditCardNumber must contain at least 11 numbers.");
 		CustomerInformation cI = new CustomerInformation("1234567890       ", 98);
 	}
 	
@@ -73,12 +79,14 @@ public class CustomerInformationTest {
 	}
 	
 	//Test exceptions CustomerNumber 
-		@Test
-		public void testExceptionTooLowCustomerNumber(){
-			expectedException.expect(IllegalArgumentException.class);
-			expectedException.expectMessage("CustomerNumber can not be negative or zero");
-			CustomerInformation cI = new CustomerInformation("1234567890000", -98);
-		}
+	@Test
+	public void testExceptionTooLowCustomerNumber(){
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("CustomerNumber can not be negative or zero.");
+		CustomerInformation cI = new CustomerInformation("1234567890000", -98);
+	}
+		
+
 	
 	
 	
