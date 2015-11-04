@@ -5,6 +5,10 @@ public class Product {
 	double price;
 	
 	public Product(String name, double price){
+		
+		if (name.trim().length() < 1) 
+			throw new IllegalArgumentException("Name must contain at least one letter.");
+		
 		this.name = name;
 		this.price = price;
 	}

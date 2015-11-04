@@ -33,7 +33,7 @@ public class ProductTest {
 		@Test
 		public void testExceptionTooShortName(){
 			expectedException.expect(IllegalArgumentException.class);
-		    expectedException.expectMessage("name must contain at least one letter.");
+		    expectedException.expectMessage("Name must contain at least one letter.");
 			Product p = new Product("", 34);
 		}
 	
