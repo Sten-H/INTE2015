@@ -55,4 +55,12 @@ public class CustomerInformationTest {
 		CustomerInformation cI = new CustomerInformation(" 3", 98);
 	}
 	
+	
+	@Test
+	public void testExceptionTrimCreditCardNumber(){
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("CreditCardNumber must contain at least 11 letters.");
+		CustomerInformation cI = new CustomerInformation("1234567890       ", 98);
+	}
+	
 }
