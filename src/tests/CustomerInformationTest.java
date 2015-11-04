@@ -68,6 +68,7 @@ public class CustomerInformationTest {
 		expectedException.expect(IllegalArgumentException.class);
 		expectedException.expectMessage("CreditCardNumber must contain at least 11 numbers.");
 		CustomerInformation cI = new CustomerInformation("ab123456789c0", 98);
+		
 	}
 	
 	
