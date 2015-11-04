@@ -13,9 +13,10 @@ public class DiscountTest {
 
 	private Calendar cal;
 	private Double db;
-	private ArrayList<DiscountPair> dlist;
+	private ArrayList<DiscountPair> dlist = new ArrayList<DiscountPair>();
 	private Date start;
 	private Date end;
+	private DiscountPair discp;
 	
 	private void setupSimpleConstructor(){
 		cal = new GregorianCalendar();
@@ -25,16 +26,79 @@ public class DiscountTest {
 		start = cal.getTime();
 		end = cal.getTime();
 		db = (double) 1;
-		ArrayList<DiscountPair> dlist = new ArrayList<DiscountPair>();
+		discp = new DiscountPair();
+		dlist.add(discp);
 	}
 	
 	@Test
 	public void testSimpleConstructor() throws ParseException{
 		setupSimpleConstructor();	
+		dlist.add(discp);
 		Discount d = new Discount(start, end, db, dlist);
 		assertEquals(d.getStartDate(), start);
 		assertEquals(d.getEndDate(), end);
 		assertEquals(d.getDiscountAmount(), 1,0);
 		assertEquals(d.getDiscountPairList(), dlist);
+	}
+	
+	//below are the tests for the constructor arguments
+	
+	//tests if the enddate can be greater than the start date. should always pass.
+	@Test
+	public void testEndGreaterThanStart(){
+		setupSimpleConstructor();
+		cal.set(Calendar.DATE, 5);
+		end = cal.getTime();
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testStartGreaterThanEnd(){
+		setupSimpleConstructor();
+		cal.set(Calendar.DATE, 5);
+		start = cal.getTime();
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testStartIsNull(){
+		setupSimpleConstructor();
+		start = null;
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEndIsNull(){
+		setupSimpleConstructor();
+		end = null;
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAmountIsSmallerThanZero(){
+		setupSimpleConstructor();
+		db = (double) -2;
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAmountIsZero(){
+		setupSimpleConstructor();
+		db = (double) 0;
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testDiscountPairListFewerThanZero(){
+		setupSimpleConstructor();
+		dlist = new ArrayList<DiscountPair>();
+		Discount d = new Discount(start, end, db, dlist);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testDiscountPairListIsNull(){
+		setupSimpleConstructor();
+		dlist = null;
+		Discount d = new Discount(start, end, db, dlist);
 	}
 }

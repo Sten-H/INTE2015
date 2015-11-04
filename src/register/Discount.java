@@ -12,10 +12,23 @@ public class Discount {
 	private ArrayList<DiscountPair> discountPairList;
 	
 	public Discount(Date start, Date end, Double db, ArrayList<DiscountPair> dlist){
+		if (dlist == null)
+			throw new IllegalArgumentException();
+		if (start == null)
+			throw new IllegalArgumentException();
+		if (end == null)
+			throw new IllegalArgumentException();
+		if (start.compareTo(end) > 0)
+			throw new IllegalArgumentException();
+		if (db <= 0)
+			throw new IllegalArgumentException();
+		if (dlist.size() < 1)
+			throw new IllegalArgumentException();
+		
 		startDate = start;
 		endDate = end;
 		discountAmount = db;
-		discountPairList = dlist;
+		discountPairList = dlist;		
 	}
 	
 	public Date getStartDate(){
