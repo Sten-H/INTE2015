@@ -50,7 +50,13 @@ public class ProductTest {
 		Product p = new Product("abcdefghijklmnopqrst", 34);
 	}
 		
-
+	//Test exceptions price
+	@Test
+	public void testExceptionTooLowPrice(){
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("Price can not be negative");
+		Product p = new Product("fejkon", -1);
+	}
 		
 	
 
