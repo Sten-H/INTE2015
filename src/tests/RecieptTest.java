@@ -24,7 +24,7 @@ public class RecieptTest {
 			orderLineList.add(ol1);
 			Order order = new Order(orderLineList);
 			Reciept r = new Reciept(order);
-			assertNotNull(r);
+			assertNotNull(r.getOrder());
 		}
 }
 
