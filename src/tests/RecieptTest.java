@@ -14,29 +14,25 @@ import org.junit.rules.ExpectedException;
 
 public class RecieptTest {
 	Product p1 = new Product("Fejkon", 33);
+	Product p2 = new Product("Potatis", 22);
+	Product p3 = new Product("Avokado", 11);
 	OrderLine ol1 = new OrderLine(p1, 2);
+	OrderLine ol2 = new OrderLine(p2, 5);
+	OrderLine ol3 = new OrderLine(p3, 1);
 	ArrayList<OrderLine> orderLineList = new ArrayList<>();
 
 	//Test constructors
 		@Test
 		public void testSimpleConstructor1(){
 			orderLineList.add(ol1);
-			Order order = new Order(orderLineList);
-			Reciept r = new Reciept(order);
-			assertNotNull(r.getOrder());
+			orderLineList.add(ol2);
+			orderLineList.add(ol3);
+			Reciept r = new Reciept(orderLineList);
+			assertNotNull(r.getOrderLineList());
 		}
 		
 		
-		//Test exceptions
-		@Rule
-		public ExpectedException expectedException = ExpectedException.none(); 
-		
-		@Test
-		public void testExceptionNullOrder(){
-			expectedException.expect(NullPointerException.class);
-		    expectedException.expectMessage("Order can not be null.");
-			Reciept r = new Reciept(null);
-		}		
+	
 }
 
 

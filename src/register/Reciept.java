@@ -1,16 +1,18 @@
 package register;
 
+import java.util.ArrayList;
+
 public class Reciept {
-	private Order order;
+	ArrayList<OrderLine> orderLineList;
 	
-	public Reciept(Order order){
-		if(order == null)
-			throw new NullPointerException("Order can not be null.");
-		this.order = order;
+	public Reciept(ArrayList<OrderLine> orderLineList){
+		if(orderLineList == null)
+			throw new NullPointerException("OrderLineList can not be null.");
+		this.orderLineList = orderLineList;
 	}
 
 	
-	public Order getOrder(){
-		return order;
+	public ArrayList<OrderLine> getOrderLineList(){
+		return orderLineList;
 	}
 }
