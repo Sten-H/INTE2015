@@ -33,4 +33,8 @@ public class OrderLine {
 	public String toString(){
 		return product.getName() + " : " + product.getPrice();  
 	}
+	
+	public int getAmount(){
+		return productAmount;
+	}
 }

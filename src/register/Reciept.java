@@ -23,5 +23,13 @@ public class Reciept {
 		return totalPrice;
 	}
 	
-	
+	public String toString(){
+		String str = "";
+		for (OrderLine o : orderLineList) str += o.toString() +"\t"+ o.getAmount() + " st\t" + o.getTotalPrice()+"\n";
+		str+="Sum: " + getTotalPrice();
+		
+		return str;
+	}	
 }
+
+
