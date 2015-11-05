@@ -11,7 +11,6 @@ public class Reciept {
 		this.orderLineList = orderLineList;
 	}
 
-	
 	public ArrayList<OrderLine> getOrderLineList(){
 		return orderLineList;
 	}

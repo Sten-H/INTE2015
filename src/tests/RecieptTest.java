@@ -42,8 +42,6 @@ public class RecieptTest {
 		Reciept r = new Reciept(null);
 	}
 	
-	
-	
 	//Test totalPrice
 	@Test
 	public void testGetTotalPrice(){
@@ -54,7 +52,6 @@ public class RecieptTest {
 		assertEquals(187, r.getTotalPrice(), 0);	
 	}
 	
-	
 	//Test toString
 	@Test
 	public void testToString(){
@@ -64,8 +61,6 @@ public class RecieptTest {
 		Reciept r = new Reciept(orderLineList);
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\nGooooodis : 22.0\t5 st\t110.0\nAvokado : 11.0\t1 st\t11.0\nSum: 187.0", r.toString());
 	}
-	
-	
 }
 
 
