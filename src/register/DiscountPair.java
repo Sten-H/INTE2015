@@ -19,8 +19,6 @@ public class DiscountPair {
 	}
 	
 	public boolean isApplicable(OrderLine ol){
-		//FIXME this should use actual comparators or something fancier.
-		return (product.getName().equals(ol.getProduct().getName()) && 
-				amount <= ol.getProductAmount());
+		return (product.equals(ol.getProduct()) && amount <= ol.getProductAmount());
 	}
 }
