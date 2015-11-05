@@ -15,4 +15,8 @@ public class Reciept {
 	public ArrayList<OrderLine> getOrderLineList(){
 		return orderLineList;
 	}
+
+	public double getTotalPrice(){
+		return 0;
+	}
 }

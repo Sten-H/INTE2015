@@ -36,10 +36,22 @@ public class RecieptTest {
 	public ExpectedException expectedException = ExpectedException.none(); 
 				
 	@Test
-		public void testExceptionNullOrder(){
+	public void testExceptionNullOrder(){
 		expectedException.expect(NullPointerException.class);
 		expectedException.expectMessage("OrderLineList can not be null.");
 		Reciept r = new Reciept(null);
+	}
+	
+	
+	
+	//Test totalPrice
+	@Test
+	public void testGetTotalPrice(){
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		orderLineList.add(ol3);
+		Reciept r = new Reciept(orderLineList);
+		assertEquals(188, r.getTotalPrice(), 0);	
 	}
 	
 	
