@@ -1,5 +1,5 @@
 package register;
-
+import register.OrderLine;
 import java.util.ArrayList;
 
 public class Reciept {
@@ -17,6 +17,9 @@ public class Reciept {
 	}
 
 	public double getTotalPrice(){
-		return 0;
+		double totalPrice = 0;
+		for (OrderLine o : orderLineList) totalPrice += o.getTotalPrice();
+		
+		return totalPrice;
 	}
 }

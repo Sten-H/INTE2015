@@ -51,7 +51,7 @@ public class RecieptTest {
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
 		Reciept r = new Reciept(orderLineList);
-		assertEquals(188, r.getTotalPrice(), 0);	
+		assertEquals(187, r.getTotalPrice(), 0);	
 	}
 	
 	
