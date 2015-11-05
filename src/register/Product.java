@@ -28,4 +28,13 @@ public class Product {
 	public double getPrice(){
 		return price;
 	}
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Product){
+			Product p = (Product)o;
+			//FIXME comparing names is kind of weak. We might need a product ID.
+			return name.equals(p.getName());
+		}
+		return false;
+	}
 }

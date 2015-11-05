@@ -57,7 +57,22 @@ public class ProductTest {
 		expectedException.expectMessage("Price can not be negative");
 		Product p = new Product("fejkon", -1);
 	}
+	@Test
+	public void testCompareSameProduct(){
+		Product p1 = new Product("Kiwi", 10.0);
+		Product p2 = new Product("Kiwi", 10.0);
 		
+		assertTrue(p1.equals(p2));
+		assertTrue(p1.equals(p1));
+	}
+	
+	@Test
+	public void testCompareDifferentProduct(){
+		Product p1 = new Product("Banan", 12.0);
+		Product p2 = new Product("Kiwi", 10.0);
+		
+		assertFalse(p1.equals(p2));
+	}
 	
 
 }
