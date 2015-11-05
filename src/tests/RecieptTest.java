@@ -22,15 +22,25 @@ public class RecieptTest {
 	ArrayList<OrderLine> orderLineList = new ArrayList<>();
 
 	//Test constructors
-		@Test
-		public void testSimpleConstructor1(){
-			orderLineList.add(ol1);
-			orderLineList.add(ol2);
-			orderLineList.add(ol3);
-			Reciept r = new Reciept(orderLineList);
-			assertNotNull(r.getOrderLineList());
-		}
-		
+	@Test
+	public void testSimpleConstructor1(){
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		orderLineList.add(ol3);
+		Reciept r = new Reciept(orderLineList);
+		assertNotNull(r.getOrderLineList());
+	}
+	
+	//Test exceptions
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none(); 
+				
+	@Test
+		public void testExceptionNullOrder(){
+		expectedException.expect(NullPointerException.class);
+		expectedException.expectMessage("OrderLineList can not be null.");
+		Reciept r = new Reciept(null);
+	}
 	
 	
 }
