@@ -6,8 +6,6 @@ public class Reciept {
 	ArrayList<OrderLine> orderLineList;
 	
 	public Reciept(ArrayList<OrderLine> orderLineList){
-		if(orderLineList == null)
-			throw new NullPointerException("OrderLineList can not be null.");
 		this.orderLineList = orderLineList;
 	}
 

@@ -14,7 +14,7 @@ import org.junit.rules.ExpectedException;
 
 public class RecieptTest {
 	Product p1 = new Product("Fejkon", 33);
-	Product p2 = new Product("Potatis", 22);
+	Product p2 = new Product("Gooooodis", 22);
 	Product p3 = new Product("Avokado", 11);
 	OrderLine ol1 = new OrderLine(p1, 2);
 	OrderLine ol2 = new OrderLine(p2, 5);
@@ -31,7 +31,7 @@ public class RecieptTest {
 			assertNotNull(r.getOrderLineList());
 		}
 		
-		
+	
 	
 }
 
