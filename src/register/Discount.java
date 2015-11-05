@@ -52,14 +52,11 @@ public class Discount {
 	}
 	
 	public boolean productsValid(ArrayList<OrderLine> products){
-		// This method is pretty poorly written at the moment. The objects themselves
-		// should handle alot of the functions, this isn't very object oriented.
 		boolean wholeMatch = true;
 		//For each discount pair we see if we can find a match in the list of products being bought.
 		for(DiscountPair dp : discountPairList){
 			boolean innerMatch = false;
 			for(OrderLine ol : products){
-				//FIXME This compare should be alot better, implement compare or something.
 				if(dp.isApplicable(ol)){
 					innerMatch = true;
 					break;
@@ -86,6 +83,6 @@ public class Discount {
 	}
 
 	public String toString(){
-		return "[ " + startDate.toString() + ", " + endDate.toString() + ", " + discountAmount + " ]";
+		return "[ " + startDate.toString() + ", " + endDate.toString() + ", " + discountAmount + ", " + discountPairList + " ]";
 	}
 }

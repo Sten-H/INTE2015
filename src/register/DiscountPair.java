@@ -21,4 +21,8 @@ public class DiscountPair {
 	public boolean isApplicable(OrderLine ol){
 		return (product.equals(ol.getProduct()) && amount <= ol.getProductAmount());
 	}
+	
+	public String toString(){
+		return "[ " + product.getName() + ", " + amount + " ]";
+	}
 }

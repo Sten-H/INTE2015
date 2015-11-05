@@ -49,9 +49,9 @@ public class DiscountManager {
 		//Create discounts
 		for(int i = 0; i < startDays.length; i++){
 			cal.set(Calendar.DATE, startDays[i]);
-			start = cal.getTime();
+			start = new Date();
 			cal.set(Calendar.DATE, endDays[i]);
-			end = cal.getTime();
+			end = new Date();
 			//Create Discount Pair placeholder
 			ArrayList<DiscountPair> dlist = new ArrayList<DiscountPair>();
 			Product p = new Product(products[i], 10);
@@ -71,8 +71,13 @@ public class DiscountManager {
 	 * @return an arraylist of applicable discounts
 	 */
 	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orders){
-		//Not implemented.
-		return null;
+		ArrayList<Discount> validDiscounts = new ArrayList<>();
+		for(Discount d : discountList){
+			if(d.productsValid(orders) && d.isValid()){
+				validDiscounts.add(d);
+			}
+		}
+		return validDiscounts;
 	}
 	/**
 	 * This is purely for testing, manually set available discounts.
