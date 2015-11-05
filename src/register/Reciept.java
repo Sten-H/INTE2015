@@ -22,4 +22,6 @@ public class Reciept {
 		
 		return totalPrice;
 	}
+	
+	
 }

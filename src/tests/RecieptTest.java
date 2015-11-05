@@ -62,7 +62,7 @@ public class RecieptTest {
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
 		Reciept r = new Reciept(orderLineList);
-		assertEquals("Fejkon : 66 , Gooooodis : 110 , Avokado : 11", r.toString());
+		assertEquals("Fejkon : 33 \t 2 st \t 66 \n Gooooodis : 22 \t 5 st \t 110 \n Avokado : 11 \t 1 st \t11 \n Sum: 187", r.toString());
 	}
 	
 	
