@@ -55,6 +55,17 @@ public class RecieptTest {
 	}
 	
 	
+	//Test toString
+	@Test
+	public void testToString(){
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		orderLineList.add(ol3);
+		Reciept r = new Reciept(orderLineList);
+		assertEquals("Fejkon : 66 , Gooooodis : 110 , Avokado : 11", r.toString());
+	}
+	
+	
 }
 
 
