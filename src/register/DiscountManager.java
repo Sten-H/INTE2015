@@ -1,13 +1,9 @@
 package register;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Random;
 
 
 /**
@@ -46,6 +42,7 @@ public class DiscountManager {
 		int startDays[] = {1, 4, 6, 10};
 		int endDays[] = {3, 6, 10, 15};
 		String products[] = {"Paj", "Tzay", "Gurka", "Glass"};
+		int productAmount[] = {2, 1, 4, 3};
 		double discountAmount[] = {20.0, 14.3, 11.4, 4.5};
 		Discount d;
 		
@@ -57,7 +54,8 @@ public class DiscountManager {
 			end = cal.getTime();
 			//Create Discount Pair placeholder
 			ArrayList<DiscountPair> dlist = new ArrayList<DiscountPair>();
-			DiscountPair dp = new DiscountPair();
+			Product p = new Product(products[i], 10);
+			DiscountPair dp = new DiscountPair(p, productAmount[i]);
 			
 			dlist.add(dp);
 			d = new Discount(start, end, discountAmount[i], dlist);
@@ -73,6 +71,7 @@ public class DiscountManager {
 	 * @return an arraylist of applicable discounts
 	 */
 	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orders){
+		//Not implemented.
 		return null;
 	}
 	/**
@@ -94,7 +93,7 @@ public class DiscountManager {
 	 * This exists only to test that the class
 	 * @return the discounts that are currently available in an array
 	 */
-	public ArrayList<Discount> getDiscounts(){
+	public ArrayList<Discount> getAllDiscounts(){
 		return discountList;
 	}
 }

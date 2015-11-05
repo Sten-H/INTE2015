@@ -30,6 +30,12 @@ public class OrderLine {
 	public double getTotalPrice(){
 		return product.getPrice() * productAmount;
 	}
+	public Product getProduct(){
+		return product;
+	}
+	public int getProductAmount(){
+		return productAmount;
+	}
 	public String toString(){
 		return product.getName() + " : " + product.getPrice();  
 	}

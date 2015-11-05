@@ -16,16 +16,7 @@ import register.OrderLine;
 import register.Product;
 
 public class DiscountManagerTest {
-
-	@Test
-	public void testSingletonPattern() {
-		DiscountManager dm1 = DiscountManager.getInstance();
-		assertEquals(1, dm1.getInstanceCount(), 0);
-		DiscountManager dm2 = DiscountManager.getInstance();
-		//Count should still be 1 since its a singleton.
-		assertEquals(1, dm1.getInstanceCount(), 0);
-		assertEquals(1, dm2.getInstanceCount(), 0);
-	}
+	
 	private ArrayList<Discount> createDiscountList(){
 		Calendar cal;
 		Date start;
@@ -39,6 +30,7 @@ public class DiscountManagerTest {
 		int startDays[] = {1, 4, 6, 10};
 		int endDays[] = {3, 6, 10, 15};
 		String products[] = {"Paj", "Tzay", "Gurka", "Glass"};
+		int productAmount[] = {2, 1, 4, 3};
 		double discountAmount[] = {20.0, 14.3, 11.4, 4.5};
 		Discount d;
 		
@@ -50,7 +42,8 @@ public class DiscountManagerTest {
 			end = cal.getTime();
 			//Create Discount Pair placeholder
 			ArrayList<DiscountPair> dlist = new ArrayList<DiscountPair>();
-			DiscountPair dp = new DiscountPair();
+			Product p = new Product(products[i], 10);
+			DiscountPair dp = new DiscountPair(p, productAmount[i]);
 			
 			dlist.add(dp);
 			d = new Discount(start, end, discountAmount[i], dlist);
@@ -60,11 +53,16 @@ public class DiscountManagerTest {
 	}
 	
 	@Test
-	public void testLoadingDiscounts(){
+	public void testSingletonPattern() {
 		DiscountManager dm1 = DiscountManager.getInstance();
-		assertTrue(dm1.getDiscounts().size() > 0);
+		assertEquals(1, dm1.getInstanceCount(), 0);
+		DiscountManager dm2 = DiscountManager.getInstance();
+		//Count should still be 1 since its a singleton.
+		assertEquals(1, dm1.getInstanceCount(), 0);
+		assertEquals(1, dm2.getInstanceCount(), 0);
 	}
-	public void testOrderEligibleForDicsount(){
+	@Test
+	public void testOrderEligibleForDiscount(){
 		DiscountManager dm1 = DiscountManager.getInstance();
 		//Set discounts manually so we know what we have.
 		dm1.setDiscounts(createDiscountList());
@@ -75,6 +73,14 @@ public class DiscountManagerTest {
 		orderLineList.add(ol1);
 		
 		ArrayList<Discount> applicableDiscounts = dm1.getValidDiscounts(orderLineList);
-		assertTrue(orderLineList==null);
+		
+		//FIXME not done.
+		assertTrue(applicableDiscounts == null);
+	}
+	
+	@Test
+	public void testLoadingDiscounts(){
+		DiscountManager dm1 = DiscountManager.getInstance();
+		assertTrue(dm1.getAllDiscounts().size() > 0);
 	}
 }

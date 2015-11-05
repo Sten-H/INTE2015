@@ -2,6 +2,7 @@ package tests;
 import static org.junit.Assert.*;
 import register.Discount;
 import register.DiscountPair;
+import register.OrderLine;
 import register.Product;
 
 import java.text.ParseException;
@@ -138,5 +139,28 @@ public class DiscountTest {
 		end = new Date();
 		Discount d = new Discount(start, end, db, dlist);
 		assertTrue(d.isValid());
+	}
+	
+	@Test
+	public void testValidProducts(){
+		start = new Date();
+		end = new Date();
+		Product p1 = new Product("Ananas", 15);
+		Product p2 = new Product("Banan", 10);
+		DiscountPair dp1 = new DiscountPair(p1, 2);
+		DiscountPair dp2= new DiscountPair(p2, 5);
+		ArrayList<DiscountPair> dpList = new ArrayList<>();
+		dpList.add(dp1);
+		Discount discount = new Discount(start, end, 10.0, dpList);
+		
+		ArrayList<OrderLine> products = new ArrayList<>();
+		OrderLine ol = new OrderLine(p1, 2);
+		products.add(ol);
+		
+		assertTrue(discount.productsValid(products));
+		ol = new OrderLine(p1, 1);
+		products.clear();
+		products.add(ol); //Too few of the right product being bought
+		assertFalse(discount.productsValid(products));
 	}
 }
