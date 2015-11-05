@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import register.CustomerInformation;
-import register.Product;
+
 
 
 public class CustomerInformationTest {
@@ -59,7 +59,7 @@ public class CustomerInformationTest {
 	@Test
 	public void testExceptionTooLongCreditCardNumber(){
 		expectedException.expect(IllegalArgumentException.class);
-		expectedException.expectMessage("CreditCardNumber must contain a maximum of 16 numbers.");
+		expectedException.expectMessage("CreditCardNumber can contain a maximum of 16 numbers.");
 		CustomerInformation cI = new CustomerInformation("1234567890987654321", 98);
 	}
 	

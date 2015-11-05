@@ -11,6 +11,9 @@ public class CustomerInformation {
 		if (creditCardNumber.trim().length() < 11) 
 			throw new IllegalArgumentException("CreditCardNumber must contain at least 11 numbers.");
 		
+		if (creditCardNumber.trim().length() > 16) 
+			throw new IllegalArgumentException("CreditCardNumber can contain a maximum of 16 numbers.");
+		
 		if (!creditCardNumber.trim().matches("[0-9]+")) 
 			throw new IllegalArgumentException("CreditCardNumber must contain at least 11 numbers.");
 		
