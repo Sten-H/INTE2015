@@ -113,9 +113,4 @@ public class DiscountManagerTest {
 		ArrayList<OrderLine> orders = new ArrayList<>(Arrays.asList(ol1, ol2));
 		assertTrue(dm.getValidDiscounts(orders).size() == 0);
 	}
-	@Test
-	public void testLoadingDiscounts(){
-		DiscountManager dm1 = DiscountManager.getInstance();
-		assertTrue(dm1.getAllDiscounts().size() > 0);
-	}
 }
