@@ -66,9 +66,6 @@ public class Discount {
 				wholeMatch = false;
 				break;	//One of the pairs in the discount didn't match, failed.
 			}
-			else {
-				innerMatch = false;	//It was a match, now we reset and go again.
-			}
 		}
 		return wholeMatch;
 	}
