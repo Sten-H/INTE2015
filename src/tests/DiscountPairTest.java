@@ -16,7 +16,7 @@ public class DiscountPairTest {
 		int i = 1;
 		DiscountPair pair = new DiscountPair(p, i);
 		assertEquals(pair.getDiscountProduct(), p);
-		assertEquals(pair.getDiscountAmount(), i);
+		assertEquals(pair.getProductAmount(), i);
 	}
 	
 	@Test
