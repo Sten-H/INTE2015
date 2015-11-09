@@ -97,8 +97,32 @@ public class DiscountManagerTest {
 		//2 majs 3 tortilla is a discount
 		OrderLine ol1 = new OrderLine(p1, 3);
 		OrderLine ol2 = new OrderLine(p2, 6);
-		ArrayList<OrderLine> orders = new ArrayList<>(Arrays.asList(ol1, ol2));
-		assertTrue(dm.getValidDiscounts(orders).size() == 1);
+		ArrayList<OrderLine> orderLineList = new ArrayList<>(Arrays.asList(ol1, ol2));
+		assertTrue(dm.getValidDiscounts(orderLineList).size() == 1);
+	}
+	
+	@Test
+	public void testMultipleValidDiscounts(){
+		DiscountManager dm = DiscountManager.getInstance();
+		dm.setDiscounts(createDiscountList());
+		//Create order that customer wants to apply valid discount to.
+		Product p1 = new Product("Paj", 33);
+		Product p2 = new Product("Kaviar", 20);
+		OrderLine ol1 = new OrderLine(p1, 2);
+		OrderLine ol2 = new OrderLine(p2, 2);
+		
+		Product p3 = new Product("Majs", 10);
+		Product p4 = new Product("Tortilla", 20);
+		//2 majs 3 tortilla is a discount
+		OrderLine ol3 = new OrderLine(p3, 3);
+		OrderLine ol4 = new OrderLine(p4, 6);
+		
+		ArrayList<OrderLine> orderLineList = new ArrayList<>();
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		orderLineList.add(ol3);
+		orderLineList.add(ol4);
+		assertTrue(dm.getValidDiscounts(orderLineList).size() == 2);
 	}
 	
 	@Test
