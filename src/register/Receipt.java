@@ -30,6 +30,7 @@ public class Receipt {
 		for (OrderLine o : orderLineList){
 			str += o.toString() +"\t"+ o.getAmount() + " st\t" + o.getTotalPrice()+"\n";
 		}
+		
 		str+="Sum: " + getTotalPrice();
 		
 		return str;

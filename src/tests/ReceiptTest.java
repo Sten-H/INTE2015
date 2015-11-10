@@ -37,10 +37,16 @@ public class ReceiptTest {
 	    cal.set(Calendar.YEAR, 2015);
 	    cal.set(Calendar.MONTH, 10);
 	    cal.set(Calendar.DATE, 10);
+	    cal.set(Calendar.HOUR_OF_DAY, 0);
+	    cal.set(Calendar.MINUTE, 0);
+	    cal.set(Calendar.SECOND, 0);
 	    start = cal.getTime();
 	    cal.set(Calendar.YEAR, 2015);
 	    cal.set(Calendar.MONTH, 11);
 	    cal.set(Calendar.DATE, 11);
+	    cal.set(Calendar.HOUR_OF_DAY, 0);
+	    cal.set(Calendar.MINUTE, 0);
+	    cal.set(Calendar.SECOND, 0);
 	    end = cal.getTime();
 	    
 	    
@@ -94,7 +100,7 @@ public class ReceiptTest {
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
 				+ "Gooooodis : 22.0\t5 st\t110.0\n"
 				+ "Avokado : 11.0\t1 st\t11.0\n\n"
-				+ "Discounts: Fejkon*2  -10.0\n\n"
+				+ "Discounts: Tue Nov 10 00:00:00 CET 2015, Fri Dec 11 00:00:00 CET 2015, 10.0,[[Fejkon, 2]]\n\n"
 				+ "Sum: 187.0", r.toString());
 	}
 }
