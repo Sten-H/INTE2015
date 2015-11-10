@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import register.Order;
 import register.OrderLine;
 import register.Product;
-import register.Reciept;
+import register.Receipt;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class RecieptTest {
+public class ReceiptTest {
 	Product p1 = new Product("Fejkon", 33);
 	Product p2 = new Product("Gooooodis", 22);
 	Product p3 = new Product("Avokado", 11);
@@ -27,7 +27,7 @@ public class RecieptTest {
 		orderLineList.add(ol1);
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
-		Reciept r = new Reciept(orderLineList);
+		Receipt r = new Receipt(orderLineList);
 		assertNotNull(r.getOrderLineList());
 	}
 	
@@ -37,9 +37,9 @@ public class RecieptTest {
 				
 	@Test
 	public void testExceptionNullOrder(){
-		expectedException.expect(NullPointerException.class);
+		expectedException.expect(IllegalArgumentException.class);
 		expectedException.expectMessage("OrderLineList can not be null.");
-		Reciept r = new Reciept(null);
+		Receipt r = new Receipt(null);
 	}
 	
 	//Test totalPrice
@@ -48,7 +48,7 @@ public class RecieptTest {
 		orderLineList.add(ol1);
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
-		Reciept r = new Reciept(orderLineList);
+		Receipt r = new Receipt(orderLineList);
 		assertEquals(187, r.getTotalPrice(), 0);	
 	}
 	
@@ -58,7 +58,7 @@ public class RecieptTest {
 		orderLineList.add(ol1);
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
-		Reciept r = new Reciept(orderLineList);
+		Receipt r = new Receipt(orderLineList);
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\nGooooodis : 22.0\t5 st\t110.0\nAvokado : 11.0\t1 st\t11.0\nSum: 187.0", r.toString());
 	}
 }
