@@ -71,7 +71,7 @@ public class ReceiptTest {
 	public void testExceptionNullOrder(){
 		expectedException.expect(IllegalArgumentException.class);
 		expectedException.expectMessage("OrderLineList can not be null.");
-		Receipt r = new Receipt(null);
+		Receipt r = new Receipt(null, createDiscountList());
 	}
 	
 	//Test totalPrice
@@ -80,7 +80,7 @@ public class ReceiptTest {
 		orderLineList.add(ol1);
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
-		Receipt r = new Receipt(orderLineList);
+		Receipt r = new Receipt(orderLineList, createDiscountList());
 		assertEquals(187, r.getTotalPrice(), 0);	
 	}
 	
@@ -90,7 +90,7 @@ public class ReceiptTest {
 		orderLineList.add(ol1);
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
-		Receipt r = new Receipt(orderLineList);
+		Receipt r = new Receipt(orderLineList, createDiscountList());
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\nGooooodis : 22.0\t5 st\t110.0\nAvokado : 11.0\t1 st\t11.0\nSum: 187.0", r.toString());
 	}
 }

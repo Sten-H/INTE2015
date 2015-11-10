@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Receipt {
 	private ArrayList<OrderLine> orderLineList;
+	private ArrayList<Discount> validDiscountList;
 	
-	public Receipt(ArrayList<OrderLine> orderLineList){
+	public Receipt(ArrayList<OrderLine> orderLineList, ArrayList<Discount> validDiscountList){
 		if(orderLineList == null)
 			throw new IllegalArgumentException("OrderLineList can not be null.");
 		this.orderLineList = orderLineList;
+		this.validDiscountList = validDiscountList;
 	}
 
 	public ArrayList<OrderLine> getOrderLineList(){
