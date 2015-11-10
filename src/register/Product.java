@@ -37,4 +37,7 @@ public class Product {
 		}
 		return false;
 	}
+	public int hashCode() {
+		return name.hashCode();
+	}
 }
