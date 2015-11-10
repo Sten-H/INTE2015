@@ -100,7 +100,7 @@ public class ReceiptTest {
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
 				+ "Gooooodis : 22.0\t5 st\t110.0\n"
 				+ "Avokado : 11.0\t1 st\t11.0\n\n"
-				+ "Discounts: Tue Nov 10 00:00:00 CET 2015, Fri Dec 11 00:00:00 CET 2015, 10.0,[[Fejkon, 2]]\n\n"
+				+ "Discounts: [ Tue Nov 10 00:00:00 CET 2015, Fri Dec 11 00:00:00 CET 2015, 10.0, [[ Fejkon, 2 ]] ]\n\n"
 				+ "Sum: 187.0", r.toString());
 	}
 }

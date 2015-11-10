@@ -31,7 +31,12 @@ public class Receipt {
 			str += o.toString() +"\t"+ o.getAmount() + " st\t" + o.getTotalPrice()+"\n";
 		}
 		
-		str+="Sum: " + getTotalPrice();
+		str+="\nDiscounts: ";
+		for (Discount d : validDiscountList){
+			str += d.toString() + "\n";
+		}
+		
+		str+="\nSum: " + getTotalPrice();
 		
 		return str;
 	}	
