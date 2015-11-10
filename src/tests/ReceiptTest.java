@@ -45,9 +45,9 @@ public class ReceiptTest {
 	    
 	    
 	    ArrayList<DiscountPair> discountPairList = new ArrayList<>();
-		DiscountPair discountPair = new DiscountPair(p3, 2);
+		DiscountPair discountPair = new DiscountPair(p1, 2);
 		discountPairList.add(discountPair);
-		Discount d = new Discount(start, end, 2.0, discountPairList);
+		Discount d = new Discount(start, end, 10.0, discountPairList);
 		validDList.add(d);
 	     
 		return validDList;
@@ -91,7 +91,11 @@ public class ReceiptTest {
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
 		Receipt r = new Receipt(orderLineList, createDiscountList());
-		assertEquals("Fejkon : 33.0\t2 st\t66.0\nGooooodis : 22.0\t5 st\t110.0\nAvokado : 11.0\t1 st\t11.0\nSum: 187.0", r.toString());
+		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
+				+ "Gooooodis : 22.0\t5 st\t110.0\n"
+				+ "Avokado : 11.0\t1 st\t11.0\n\n"
+				+ "Discounts: Fejkon*2  -10.0\n\n"
+				+ "Sum: 187.0", r.toString());
 	}
 }
 
