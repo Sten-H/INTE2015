@@ -14,9 +14,10 @@ public class Order {
 			throw new IllegalArgumentException("Order must contain atleast 1 product.");
 		this.orderLineList = orderLineList;
 	}
-	private int getValidDiscounts(){
-		//ska vara private Discount
-		return 0;
+	//NOTE: SHOULD PROABLY BE PRIVATE
+	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orderLineList){
+		DiscountManager dm = DiscountManager.getInstance();
+		return dm.getValidDiscounts(orderLineList);
 	}
 	/**
 	 * Gets applicable discounts and creates a receipt
