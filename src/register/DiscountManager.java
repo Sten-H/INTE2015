@@ -49,9 +49,4 @@ public class DiscountManager {
 	public int getInstanceCount(){	
 		return instanceCount;
 	}
-
-	 // This method exists only for testing purposes.
-	public ArrayList<Discount> getAllDiscounts(){
-		return new ArrayList<Discount>(discountList); // Returns a shallow copy.
-	}
 }
