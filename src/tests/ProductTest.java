@@ -74,5 +74,12 @@ public class ProductTest {
 		assertFalse(p1.equals(p2));
 	}
 	
+	@Test
+	public void testCompareNotProduct(){
+		Product p1 = new Product("Banan", 12.0);
+		String s = "test";
+		
+		assertFalse(p1.equals(s));
+	}
 
 }
