@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import register.CustomerInformation;
 import register.Discount;
 import register.DiscountPair;
 import register.OrderLine;
@@ -117,6 +118,14 @@ public class ReceiptTest {
 		expectedException.expect(IllegalArgumentException.class);
 		expectedException.expectMessage("OrderLineList can not be null.");
 		Receipt r = new Receipt(null, createDiscountList());
+	}
+	
+	@Test
+	public void testOrderLineListNullCustomerInfoConstructor(){
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("OrderLineList can not be null.");
+		CustomerInformation ci = new CustomerInformation("000111222333",  0123456);
+		Receipt r = new Receipt(null, createDiscountList(), ci);
 	}
 	
 	//Test totalPrice

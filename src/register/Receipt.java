@@ -24,7 +24,7 @@ public class Receipt {
 		this.validDiscountList = validDiscountList;
 	}
 	
-	//second cnstructor in case order has a non-null customerInformation
+	//second constructor in case order has a non-null customerInformation
 	public Receipt(ArrayList<OrderLine> orderLineList, ArrayList<Discount> validDiscountList, CustomerInformation customer){
 		if(orderLineList == null)
 			throw new IllegalArgumentException("OrderLineList can not be null.");
