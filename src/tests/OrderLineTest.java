@@ -25,6 +25,14 @@ public class OrderLineTest {
 	    expectedException.expectMessage("Product can not be null.");
 	    ol = new OrderLine(null, 10);
 	}
+	
+	@Test
+	public void testProductNullInConstructor(){
+		expectedException.expect(IllegalArgumentException.class);
+	    expectedException.expectMessage("Product can not be null.");
+	    OrderLine ol = new OrderLine(null, 10);
+	}
+	
 	@Test
 	public void testGetTotalPrice(){
 		Product mustard = new Product("Mustard", 25);

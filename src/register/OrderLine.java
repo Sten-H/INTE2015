@@ -16,7 +16,7 @@ public class OrderLine {
 	 */
 	public OrderLine(Product p, int amount){
 		if(p == null)
-			throw new NullPointerException("Product can not be null.");
+			throw new IllegalArgumentException("Product can not be null.");
 		product = p;
 		if(amount < 1)
 			throw new IllegalArgumentException("productAmount can not be less than 1.");
