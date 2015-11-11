@@ -3,11 +3,17 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import register.Discount;
+import register.DiscountManager;
+import register.DiscountPair;
 import register.Order;
 import register.OrderLine;
 import register.Product;
@@ -38,5 +44,43 @@ public class OrderTest {
 		
 		//Super placeholder
 		assertEquals(order.createReceipt(), 0, 0);
+	}
+	
+	@Test
+	public void testNoValidDiscounts(){
+		Product p1 = new Product("Milk", 10);
+		Product p2 = new Product("Bread", 12);
+		OrderLine ol1 = new OrderLine(p1, 2);
+		OrderLine ol2 = new OrderLine(p2, 1);
+		ArrayList<OrderLine> orderLineList= new ArrayList<OrderLine>();
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		Order order = new Order(orderLineList);
+		assertEquals(order.getValidDiscounts(orderLineList).size(), 0);
+	}
+	
+	@Test
+	public void testValidDiscounts(){
+		Product p1 = new Product("Milk", 10);
+		Product p2 = new Product("Bread", 12);
+		OrderLine ol1 = new OrderLine(p1, 2);
+		OrderLine ol2 = new OrderLine(p2, 1);
+		ArrayList<OrderLine> orderLineList= new ArrayList<OrderLine>();
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		Order order = new Order(orderLineList);
+		
+		Calendar cal = new GregorianCalendar();
+		Date date = cal.getTime();
+		DiscountPair dp = new DiscountPair(p1, 2);
+		ArrayList<DiscountPair> dplist = new ArrayList<DiscountPair>();
+		dplist.add(dp);
+		Discount discount = new Discount(date, date, 5.0, dplist);
+		
+		DiscountManager dm = DiscountManager.getInstance();
+		ArrayList<Discount> dlist = new ArrayList<Discount>();
+		dlist.add(discount);
+		dm.setDiscounts(dlist);
+		assertEquals(order.getValidDiscounts(orderLineList), dlist);
 	}
 }
