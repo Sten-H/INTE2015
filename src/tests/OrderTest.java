@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import register.CustomerInformation;
 import register.Discount;
 import register.DiscountManager;
 import register.DiscountPair;
@@ -31,6 +32,16 @@ public class OrderTest {
 	    expectedException.expectMessage("Order must contain atleast 1 product.");
 		ArrayList<OrderLine> orderLineList = new ArrayList<>();
 		Order o = new Order(orderLineList);
+	}
+	
+	@Test
+	public void testCustomerInfoConstructor(){
+		CustomerInformation ci = new CustomerInformation("000111222333",  0123456);
+		ArrayList<OrderLine> orderLineList = new ArrayList<>();
+		Product p1 = new Product("Catsup", 33);
+		OrderLine ol1 = new OrderLine(p1, 2);
+		orderLineList.add(ol1);
+		Order o = new Order(orderLineList, ci);
 	}
 	
 	@Test

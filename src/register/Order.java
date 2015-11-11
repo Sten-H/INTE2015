@@ -2,18 +2,33 @@ package register;
 
 import java.util.ArrayList;
 /**
- * Order contains all the products to be baught. 
+ * Order contains all the products to be bought. 
  * It will create a receipt with the orderlines
  * and the applicable discounts.
  */
 public class Order {
 	private ArrayList<OrderLine> orderLineList = new ArrayList<>();
+	private CustomerInformation customer;
 	
 	public Order(ArrayList<OrderLine> orderLineList){
 		if(orderLineList.size() < 1)
 			throw new IllegalArgumentException("Order must contain atleast 1 product.");
 		this.orderLineList = orderLineList;
 	}
+	
+	
+	/**
+	 * customer information is not always needed, and Order therefore has 2 constructors
+	 * @param orderLineList, list of bought products
+	 * @param customer, information about customer
+	 */
+	public Order(ArrayList<OrderLine> orderLineList, CustomerInformation customer){
+		if(orderLineList.size() < 1)
+			throw new IllegalArgumentException("Order must contain atleast 1 product.");
+		this.orderLineList = orderLineList;
+		this.customer = customer;
+	}
+	
 	//NOTE: SHOULD PROABLY BE PRIVATE
 	/**
 	 * gets all valid discounts for order
