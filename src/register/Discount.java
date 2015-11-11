@@ -55,8 +55,8 @@ public class Discount {
 	
 	/**
 	 * matches the discount with an array of products, to see if the discount is valid.
-	 * @param products
-	 * @return
+	 * @param products, a list of the products being bought.
+	 * @return true if the products are valid for the discount
 	 */
 	public boolean productsValid(ArrayList<OrderLine> products){
 		boolean wholeMatch = true;
@@ -80,7 +80,7 @@ public class Discount {
 	
 	/**
 	 * compares the discounts startDate and endDate with todays date, to check if the discount is valid
-	 * @return
+	 * @return true if date is valid
 	 */
 	public boolean isDateValid(){
 		Date todaysDate = new Date();
