@@ -15,6 +15,11 @@ public class Order {
 		this.orderLineList = orderLineList;
 	}
 	//NOTE: SHOULD PROABLY BE PRIVATE
+	/**
+	 * gets all valid discounts for order
+	 * @param orderLineList, list of all products to be bought
+	 * @return a list of all eligble discounts
+	 */
 	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orderLineList){
 		DiscountManager dm = DiscountManager.getInstance();
 		return dm.getValidDiscounts(orderLineList);
@@ -24,8 +29,8 @@ public class Order {
 	 * from discounts and orders.
 	 * @return receipt, returns a Receipt class
 	 */
-	public int createReceipt(){
-		//ska vara public Receipt
-		return 0; 
+	public Receipt createReceipt(){
+		Receipt receipt = new Receipt(orderLineList, getValidDiscounts(orderLineList));
+		return receipt; 
 	}
 }

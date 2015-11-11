@@ -43,7 +43,7 @@ public class OrderTest {
 		Order order = new Order(orderLineList);
 		
 		//Super placeholder
-		assertEquals(order.createReceipt(), 0, 0);
+		// assertEquals(order.createReceipt(), 0, 0);
 	}
 	
 	@Test
