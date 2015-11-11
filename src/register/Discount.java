@@ -95,6 +95,9 @@ public class Discount {
 	}
 
 	public String toString(){
-		return "[ " + startDate.toString() + ", " + endDate.toString() + ", " + discountAmount + ", " + discountPairList + " ]";
+		String start = startDate.toString().substring(0,10);
+		String end = startDate.toString().substring(0,10);
+		//Maybe we don't want to print start dates. I'll leave them unprinted for now.
+		return "[" + discountAmount + " kr, " + discountPairList + "]";
 	}
 }

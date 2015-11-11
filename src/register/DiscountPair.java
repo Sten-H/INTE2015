@@ -28,6 +28,6 @@ public class DiscountPair {
 	}
 	
 	public String toString(){
-		return "[ " + product.getName() + ", " + productAmount + " ]";
+		return productAmount + "x " + product.getName();
 	}
 }

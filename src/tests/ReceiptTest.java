@@ -139,7 +139,7 @@ public class ReceiptTest {
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
 				+ "Godis : 22.0\t5 st\t110.0\n"
 				+ "Avokado : 11.0\t1 st\t11.0\n"
-				+ "\nDiscounts: [ Tue Nov 10 00:00:00 CET 2015, Fri Dec 11 00:00:00 CET 2015, 10.0, [[ Fejkon, 2 ]] ]\n"
+				+ "\nDiscounts: [10.0 kr, [2x Fejkon]]\n"
 				+ "\nSum: 187.0", r.toString());
 	}
 	
@@ -154,8 +154,8 @@ public class ReceiptTest {
 		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
 				+ "Godis : 22.0\t5 st\t110.0\n"
 				+ "Avokado : 11.0\t1 st\t11.0\n"
-				+ "\nDiscounts: [ Tue Nov 10 00:00:00 CET 2015, Fri Dec 11 00:00:00 CET 2015, 10.0, [[ Fejkon, 2 ]] ]\n"
-				+ "[ Tue Nov 10 00:00:00 CET 2015, Fri Dec 11 00:00:00 CET 2015, 5.0, [[ Godis, 3 ], [ Avokado, 1 ]] ]\n"
+				+ "\nDiscounts: [10.0 kr, [2x Fejkon]]\n"
+				+ "[5.0 kr, [3x Godis, 1x Avokado]]\n"
 				+ "\nSum: 187.0", r.toString());
 	}
 }
