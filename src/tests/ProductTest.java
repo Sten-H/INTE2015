@@ -82,4 +82,10 @@ public class ProductTest {
 		assertFalse(p1.equals(s));
 	}
 
+	@Test
+	public void testHashCode(){
+		Product p1 = new Product("Banan", 12.0);
+		assertEquals(p1.hashCode(), p1.getName().hashCode());
+	}
+	
 }
