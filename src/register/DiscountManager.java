@@ -33,7 +33,7 @@ public class DiscountManager {
 	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orderLineList){
 		ArrayList<Discount> validDiscounts = new ArrayList<>();
 		for(Discount d : discountList){
-			if(d.productsValid(orderLineList) && d.isValid()){
+			if(d.productsValid(orderLineList) && d.isDateValid()){
 				validDiscounts.add(d);
 			}
 		}

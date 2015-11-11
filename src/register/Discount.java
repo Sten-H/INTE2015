@@ -5,34 +5,34 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-
-
+/**
+ * each object of "Discount" is similar to a discount coupon, having a combination
+ * of products, a discount amount, and a validity time span.
+ */
 public class Discount {
 	
-	private Date startDate;
-	private Date endDate;
+	private Date startDate, endDate;
 	private double discountAmount;
 	private ArrayList<DiscountPair> discountPairList;
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	
-	public Discount(Date start, Date end, Double db, ArrayList<DiscountPair> dlist){
-		if (dlist == null)
-			throw new IllegalArgumentException();
-		if (start == null)
-			throw new IllegalArgumentException();
-		if (end == null)
-			throw new IllegalArgumentException();
-		if (start.compareTo(end) > 0)
-			throw new IllegalArgumentException();
-		if (db <= 0)
-			throw new IllegalArgumentException();
-		if (dlist.size() < 1)
-			throw new IllegalArgumentException();
+	public Discount(Date startDate, Date endDate, Double discountAmount, ArrayList<DiscountPair> discountPairList){
+		if (discountPairList == null)
+			throw new IllegalArgumentException("discountPairList cannot be null!");
+		if (startDate == null)
+			throw new IllegalArgumentException("startDate cannot be null!");
+		if (endDate == null)
+			throw new IllegalArgumentException("endDate cannot be null!");
+		if (startDate.compareTo(endDate) > 0)
+			throw new IllegalArgumentException("startDate cannot be later than endDate!");
+		if (discountAmount <= 0)
+			throw new IllegalArgumentException("discountAmount must be atleast 1!");
+		if (discountPairList.size() < 1)
+			throw new IllegalArgumentException("discountPairList cannot be empty!");
 		
-		startDate = start;
-		endDate = end;
-		discountAmount = db;
-		discountPairList = dlist;		
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.discountAmount = discountAmount;
+		this.discountPairList = discountPairList;		
 	}
 	
 	public Date getStartDate(){
@@ -51,6 +51,13 @@ public class Discount {
 		return discountPairList;
 	}
 	
+	
+	
+	/**
+	 * matches the discount with an array of products, to see if the discount is valid.
+	 * @param products
+	 * @return
+	 */
 	public boolean productsValid(ArrayList<OrderLine> products){
 		boolean wholeMatch = true;
 		//For each discount pair we see if we can find a match in the list of products being bought.
@@ -70,11 +77,19 @@ public class Discount {
 		return wholeMatch;
 	}
 	
-	public boolean isValid(){
-		Date d = new Date();
-		if (startDate.before(d) && endDate.after(d))
+	
+	/**
+	 * compares the discounts startDate and endDate with todays date, to check if the discount is valid
+	 * @return
+	 */
+	public boolean isDateValid(){
+		Date todaysDate = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		if (startDate.before(todaysDate) && endDate.after(todaysDate))
 			return true;
-		if (Integer.parseInt(sdf.format(endDate)) - Integer.parseInt(sdf.format(d)) == 0)
+		
+		//this if-statement is required for the special case where the endDate is the same as todays date.
+		if (Integer.parseInt(sdf.format(endDate)) - Integer.parseInt(sdf.format(todaysDate)) == 0)
 			return true;
 		return false;
 	}
