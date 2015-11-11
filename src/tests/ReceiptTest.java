@@ -145,11 +145,18 @@ public class ReceiptTest {
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
 		Receipt r = new Receipt(orderLineList, createDiscountList());
-		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
+		assertEquals("\n###Receipt###\n"
+				+ "Customer number: ???\n"
+				+ "---Products---\n"
+				+ "Fejkon : 33.0\t2 st\t66.0\n"
 				+ "Godis : 22.0\t5 st\t110.0\n"
 				+ "Avokado : 11.0\t1 st\t11.0\n"
-				+ "\nDiscounts: [10.0 kr, [2x Fejkon]]\n"
-				+ "\nSum: 187.0", r.toString());
+				+ "---Discounts---\n"
+				+ "[-10.0 kr, [2x Fejkon]]\n"
+				+ "---Sum---\n"
+				+ "Total price: 187.0\n"
+				+ "Discounted price: 177.0\n"
+				+ "---Thanks!---", r.toString());
 	}
 	
 	
@@ -160,12 +167,19 @@ public class ReceiptTest {
 		orderLineList.add(ol2);
 		orderLineList.add(ol3);
 		Receipt r = new Receipt(orderLineList, createDiscountListMultiple());
-		assertEquals("Fejkon : 33.0\t2 st\t66.0\n"
+		assertEquals("\n###Receipt###\n"
+				+ "Customer number: ???\n"
+				+ "---Products---\n"
+				+ "Fejkon : 33.0\t2 st\t66.0\n"
 				+ "Godis : 22.0\t5 st\t110.0\n"
 				+ "Avokado : 11.0\t1 st\t11.0\n"
-				+ "\nDiscounts: [10.0 kr, [2x Fejkon]]\n"
-				+ "[5.0 kr, [3x Godis, 1x Avokado]]\n"
-				+ "\nSum: 187.0", r.toString());
+				+ "---Discounts---\n"
+				+ "[-10.0 kr, [2x Fejkon]]\n"
+				+ "[-5.0 kr, [3x Godis, 1x Avokado]]\n"
+				+ "---Sum---\n"
+				+ "Total price: 187.0\n"
+				+ "Discounted price: 172.0\n"
+				+ "---Thanks!---", r.toString());
 	}
 }
 

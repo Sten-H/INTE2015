@@ -51,23 +51,34 @@ public class Receipt {
 		return totalPrice;
 	}
 	
+	public double getDiscountAmount(){
+		double totalDiscount = 0;
+		for (Discount d : validDiscountList){
+			totalDiscount += d.getDiscountAmount();
+		}
+		
+		return totalDiscount;
+	}
 	public CustomerInformation getCustomerInformation(){
 		return customer;
 	}
 	
 	public String toString(){
-		String str = "";
+		String str = "\n###Receipt###\n";
+		str += "Customer number: ";
+		str += (customer == null) ? "???" : customer.getCustomerNumber();
+		str += "\n---Products---\n";
 		for (OrderLine o : orderLineList){
 			str += o.toString() +"\t"+ o.getAmount() + " st\t" + o.getTotalPrice()+"\n";
 		}
-		
-		str+="\nDiscounts: ";
+		str += "---Discounts---\n";
 		for (Discount d : validDiscountList){
 			str += d.toString() + "\n";
 		}
-		
-		str+="\nSum: " + getTotalPrice();
-		
+		str += "---Sum---";
+		str +="\nTotal price: " + getTotalPrice();
+		str +="\nDiscounted price: " + (getTotalPrice() - getDiscountAmount());
+		str +="\n---Thanks!---";
 		return str;
 	}	
 }
