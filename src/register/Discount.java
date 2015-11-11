@@ -64,7 +64,7 @@ public class Discount {
 		for(DiscountPair dp : discountPairList){
 			boolean innerMatch = false;
 			for(OrderLine ol : products){
-				if(dp.isApplicable(ol)){
+				if(dp.matchesOrderLine(ol)){
 					innerMatch = true;
 					break;
 				}
