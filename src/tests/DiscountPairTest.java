@@ -20,30 +20,30 @@ public class DiscountPairTest {
 	}
 	
 	@Test
-	public void testContainsProductsBought(){
+	public void testMatchesProductsBought(){
 		Product p1 = new Product("Champinjon", 25);
 		OrderLine ol = new OrderLine(p1, 3);
 		DiscountPair dp = new DiscountPair(p1, 2);
 		
-		assertTrue(dp.isApplicable(ol));
+		assertTrue(dp.matchesOrderLine(ol));
 	}
 	
 	@Test
-	public void testDoesNotContainProductsBought(){
+	public void testDoesNotMatchProductsBought(){
 		Product p1 = new Product("Champinjon", 25);
 		Product p2 = new Product("Kantarell", 45);
 		OrderLine ol = new OrderLine(p1, 3);
 		DiscountPair dp = new DiscountPair(p2, 3);
 		
-		assertFalse(dp.isApplicable(ol));
+		assertFalse(dp.matchesOrderLine(ol));
 	}
 	
 	@Test
-	public void testDoesContainProductBoughtButTooFew(){
+	public void testDoesMatchProductBoughtButTooFew(){
 		Product p1 = new Product("Champinjon", 25);
 		OrderLine ol = new OrderLine(p1, 1);
 		DiscountPair dp = new DiscountPair(p1, 2);
 		
-		assertFalse(dp.isApplicable(ol));	
+		assertFalse(dp.matchesOrderLine(ol));	
 	}
 }

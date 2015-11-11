@@ -18,7 +18,12 @@ public class DiscountPair {
 		return productAmount;
 	}
 	
-	public boolean isApplicable(OrderLine ol){
+	/**
+	 * Checks if DiscountPair has same Product and same or greater productAmount as OrderLine
+	 * @param ol an OrderLine to compare to DiscountPair
+	 * @return true if it is a match
+	 */
+	public boolean matchesOrderLine(OrderLine ol){
 		return (product.equals(ol.getProduct()) && productAmount <= ol.getProductAmount());
 	}
 	
