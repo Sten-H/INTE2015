@@ -38,7 +38,7 @@ public class CustomerInformationTest {
 	
 	@Test
 	public void testExceptionNullCreditCardNumber(){
-		expectedException.expect(NullPointerException.class);
+		expectedException.expect(IllegalArgumentException.class);
 	    expectedException.expectMessage("CreditCardNumber can not be null.");
 	    CustomerInformation cI = new CustomerInformation(null, 98);
 	}		

@@ -7,7 +7,7 @@ public class Product {
 	public Product(String name, double price){
 		
 		if(name == null)
-			throw new NullPointerException("Name can not be null.");
+			throw new IllegalArgumentException("Name can not be null.");
 		
 		if (name.trim().length() < 1) 
 			throw new IllegalArgumentException("Name must contain at least one letter.");

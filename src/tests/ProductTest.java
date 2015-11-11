@@ -30,7 +30,7 @@ public class ProductTest {
 	
 	@Test
 	public void testExceptionNullName(){
-		expectedException.expect(NullPointerException.class);
+		expectedException.expect(IllegalArgumentException.class);
 	    expectedException.expectMessage("Name can not be null.");
 	    Product p = new Product(null, 10);
 	}		
