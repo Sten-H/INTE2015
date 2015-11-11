@@ -9,26 +9,22 @@ import java.util.ArrayList;
 public class Order {
 	private ArrayList<OrderLine> orderLineList = new ArrayList<>();
 	private CustomerInformation customer;
-	
+
 	public Order(ArrayList<OrderLine> orderLineList){
 		if(orderLineList.size() < 1)
 			throw new IllegalArgumentException("Order must contain atleast 1 product.");
 		this.orderLineList = orderLineList;
 	}
-	
-	
-	/**
-	 * customer information is not always needed, and Order therefore has 2 constructors
-	 * @param orderLineList, list of bought products
-	 * @param customer, information about customer
-	 */
+
+
+	 //customer information is not always needed, and Order therefore has 2 constructors
 	public Order(ArrayList<OrderLine> orderLineList, CustomerInformation customer){
 		if(orderLineList.size() < 1)
 			throw new IllegalArgumentException("Order must contain atleast 1 product.");
 		this.orderLineList = orderLineList;
 		this.customer = customer;
 	}
-	
+
 	//NOTE: SHOULD PROABLY BE PRIVATE
 	/**
 	 * gets all valid discounts for order
@@ -41,11 +37,16 @@ public class Order {
 	}
 	/**
 	 * Gets applicable discounts and creates a receipt
-	 * from discounts and orders.
+	 * from discounts and orders. Will include the customers
+	 * information if present.
 	 * @return receipt, returns a Receipt class
 	 */
 	public Receipt createReceipt(){
-		Receipt receipt = new Receipt(orderLineList, getValidDiscounts(orderLineList));
+		Receipt receipt;
+		if (customer != null)
+			receipt = new Receipt(orderLineList, getValidDiscounts(orderLineList), customer);
+		else
+			receipt = new Receipt(orderLineList, getValidDiscounts(orderLineList));
 		return receipt; 
 	}
 }

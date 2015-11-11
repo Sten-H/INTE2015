@@ -15,12 +15,22 @@ import java.util.ArrayList;
 public class Receipt {
 	private ArrayList<OrderLine> orderLineList;
 	private ArrayList<Discount> validDiscountList;
+	private CustomerInformation customer;
 	
 	public Receipt(ArrayList<OrderLine> orderLineList, ArrayList<Discount> validDiscountList){
 		if(orderLineList == null)
 			throw new IllegalArgumentException("OrderLineList can not be null.");
 		this.orderLineList = orderLineList;
 		this.validDiscountList = validDiscountList;
+	}
+	
+	//second cnstructor in case order has a non-null customerInformation
+	public Receipt(ArrayList<OrderLine> orderLineList, ArrayList<Discount> validDiscountList, CustomerInformation customer){
+		if(orderLineList == null)
+			throw new IllegalArgumentException("OrderLineList can not be null.");
+		this.orderLineList = orderLineList;
+		this.validDiscountList = validDiscountList;
+		this.customer = customer;
 	}
 
 	public ArrayList<OrderLine> getOrderLineList(){
@@ -39,6 +49,10 @@ public class Receipt {
 			totalPrice += o.getTotalPrice();
 		}
 		return totalPrice;
+	}
+	
+	public CustomerInformation getCustomerInformation(){
+		return customer;
 	}
 	
 	public String toString(){

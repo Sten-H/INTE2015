@@ -45,6 +45,15 @@ public class OrderTest {
 	}
 	
 	@Test
+	public void testCustomerInfoConstructorWithZeroLengthOrderLineList() {
+		expectedException.expect(IllegalArgumentException.class);
+	    expectedException.expectMessage("Order must contain atleast 1 product.");
+		ArrayList<OrderLine> orderLineList = new ArrayList<>();
+		CustomerInformation ci = new CustomerInformation("000111222333",  0123456);
+		Order o = new Order(orderLineList, ci);
+	}
+	
+	@Test
 	public void testCreateReceipt(){
 		//This should probably be moved to a setupd method or something.
 		Product p1 = new Product("Catsup", 33);
@@ -52,9 +61,18 @@ public class OrderTest {
 		ArrayList<OrderLine> orderLineList = new ArrayList<>();
 		orderLineList.add(ol1);
 		Order order = new Order(orderLineList);
-		
-		//Super placeholder
-		// assertEquals(order.createReceipt(), 0, 0);
+		order.createReceipt();
+	}
+
+	@Test
+	public void testCreateReceiptWithCustomerInformation(){
+		Product p1 = new Product("Catsup", 33);
+		OrderLine ol1 = new OrderLine(p1, 2);
+		ArrayList<OrderLine> orderLineList = new ArrayList<>();
+		orderLineList.add(ol1);
+		CustomerInformation ci = new CustomerInformation("000111222333",  0123456);
+		Order order = new Order(orderLineList, ci);
+		assertEquals(order.createReceipt().getCustomerInformation(), ci);
 	}
 	
 	@Test
