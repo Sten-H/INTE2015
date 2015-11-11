@@ -71,7 +71,8 @@ public class Main {
 		orderLineList.add(ol2);
                 orderLineList.add(ol3);
                 orderLineList.add(ol4);
-		Order order = new Order(orderLineList);
+                CustomerInformation cI = new CustomerInformation("12345678900", 3);
+		Order order = new Order(orderLineList, cI);
                 
                 order.getValidDiscounts(orderLineList);
                 Receipt r = order.createReceipt();
