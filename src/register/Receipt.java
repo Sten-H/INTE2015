@@ -2,6 +2,16 @@ package register;
 import register.OrderLine;
 import java.util.ArrayList;
 
+/**
+ * The Receipt class main focus is to take an orderLineList 
+ * and (if available) a validDiscountList and transform them into
+ * a print with suitable layout. 
+ * 
+ * (((((The Receipt class also calculates the total end price of the order)))) 
+ * Should the method getTotalPrice() really be in this class at all? 
+ * 
+ *
+ */
 public class Receipt {
 	private ArrayList<OrderLine> orderLineList;
 	private ArrayList<Discount> validDiscountList;
@@ -17,6 +27,12 @@ public class Receipt {
 		return orderLineList;
 	}
 
+	/** 
+	 * Calculates the total price of the order by summing 
+	 * total price (getTotalPrice()) from every OrderLine in the orderLineList
+	 * and returns it as a double.
+	 * @return the total price of the order
+	 */
 	public double getTotalPrice(){
 		double totalPrice = 0;
 		for (OrderLine o : orderLineList){ 
@@ -41,5 +57,6 @@ public class Receipt {
 		return str;
 	}	
 }
+
 
 
