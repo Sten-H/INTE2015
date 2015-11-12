@@ -1,5 +1,10 @@
 package register;
 
+/**
+ * Class that handles the customer. Stores a number and
+ * their credit card number. 
+ *
+ */
 public class CustomerInformation {
 	String creditCardNumber;
 	int customerNumber;
