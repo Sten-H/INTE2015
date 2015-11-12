@@ -45,16 +45,6 @@ public class DiscountTest {
 		assertEquals(d.getDiscountPairList(), dlist);
 	}
 	
-	
-	//tests if the enddate can be greater than the start date. should always pass.
-	@Test
-	public void testEndGreaterThanStart(){
-		setupSimpleConstructor();
-		cal.set(Calendar.DATE, 5);
-		end = cal.getTime();
-		Discount d = new Discount(start, end, db, dlist);
-	}
-	
 	@Test(expected=IllegalArgumentException.class)
 	public void testStartGreaterThanEnd(){
 		setupSimpleConstructor();
