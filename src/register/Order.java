@@ -11,15 +11,18 @@ public class Order {
 	private CustomerInformation customer;
 
 	public Order(ArrayList<OrderLine> orderLineList){
-		if(orderLineList.size() < 1)
-			throw new IllegalArgumentException("Order must contain atleast 1 product.");
-		this.orderLineList = orderLineList;
+            if(orderLineList == null)
+                throw new IllegalArgumentException("Order cannot be null.");
+            if(orderLineList.size() < 1)
+                    throw new IllegalArgumentException("Order must contain atleast 1 product.");
+            this.orderLineList = orderLineList;
 	}
-
 
 	 //customer information is not always needed, and Order therefore has 2 constructors
 	public Order(ArrayList<OrderLine> orderLineList, CustomerInformation customer){
-		if(orderLineList.size() < 1)
+            if(orderLineList == null)
+                    throw new IllegalArgumentException("Order cannot be null.");	
+            if(orderLineList.size() < 1)
 			throw new IllegalArgumentException("Order must contain atleast 1 product.");
 		this.orderLineList = orderLineList;
 		this.customer = customer;
@@ -29,12 +32,13 @@ public class Order {
 	/**
 	 * gets all valid discounts for order
 	 * @param orderLineList, list of all products to be bought
-	 * @return a list of all eligble discounts
+	 * @return a list of all eligible discounts
 	 */
 	public ArrayList<Discount> getValidDiscounts(ArrayList<OrderLine> orderLineList){
 		DiscountManager dm = DiscountManager.getInstance();
 		return dm.getValidDiscounts(orderLineList);
 	}
+        
 	/**
 	 * Gets applicable discounts and creates a receipt
 	 * from discounts and orders. Will include the customers
