@@ -138,6 +138,20 @@ public class ReceiptTest {
 		assertEquals(187, r.getTotalPrice(), 0);	
 	}
 	
+	@Test
+	public void testGetDiscountAmountOneDiscount(){
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		orderLineList.add(ol3);
+		Receipt r = new Receipt(orderLineList, createDiscountList());
+		assertEquals(10, r.getDiscountAmount(), 0);
+	}
+	
+	@Test
+	public void testGetDiscountAmountNoDiscount(){
+		Receipt r = new Receipt(orderLineList, new ArrayList<Discount>());
+		assertEquals(0, r.getDiscountAmount(), 0);
+	}
 	//Test toString
 	@Test
 	public void testToString(){

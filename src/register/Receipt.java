@@ -51,6 +51,10 @@ public class Receipt {
 		return totalPrice;
 	}
 	
+	/**
+	 * Calculates the sum of all valid discounts
+	 * @return sum of discounts as double
+	 */
 	public double getDiscountAmount(){
 		double totalDiscount = 0;
 		for (Discount d : validDiscountList){
