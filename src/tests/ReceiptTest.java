@@ -173,7 +173,27 @@ public class ReceiptTest {
 				+ "---Thanks!---", r.toString());
 	}
 	
-	
+	//test with customerInformation
+	@Test
+	public void testToStringCustomerInfo(){
+		CustomerInformation c = new CustomerInformation("111222333444",123123);
+		orderLineList.add(ol1);
+		orderLineList.add(ol2);
+		orderLineList.add(ol3);
+		Receipt r = new Receipt(orderLineList, createDiscountList(), c);
+		assertEquals("\n###Receipt###\n"
+				+ "Customer number: 123123\n"
+				+ "---Products---\n"
+				+ "Fejkon : 33.0\t2 st\t66.0\n"
+				+ "Godis : 22.0\t5 st\t110.0\n"
+				+ "Avokado : 11.0\t1 st\t11.0\n"
+				+ "---Discounts---\n"
+				+ "[-10.0 kr, [2x Fejkon]]\n"
+				+ "---Sum---\n"
+				+ "Total price: 187.0\n"
+				+ "Discounted price: 177.0\n"
+				+ "---Thanks!---", r.toString());
+	}
 	
 	@Test
 	public void testToStringMultipleDiscounts(){
