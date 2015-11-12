@@ -6,8 +6,8 @@ package register;
  *
  */
 public class CustomerInformation {
-	String creditCardNumber;
-	int customerNumber;
+	private String creditCardNumber;
+	private int customerNumber;
 
 	public CustomerInformation(String creditCardNumber, int customerNumber){
 		if(creditCardNumber == null)
