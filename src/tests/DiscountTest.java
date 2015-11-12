@@ -31,9 +31,13 @@ public class DiscountTest {
 		dlist.add(discp);
 	}
 	
+	
+	//below are the tests for the constructor arguments
 	@Test
 	public void testSimpleConstructor() throws ParseException{
 		setupSimpleConstructor();	
+		cal.set(Calendar.MONTH, Calendar.MARCH);
+		end = cal.getTime();
 		Discount d = new Discount(start, end, db, dlist);
 		assertEquals(d.getStartDate(), start);
 		assertEquals(d.getEndDate(), end);
@@ -41,8 +45,6 @@ public class DiscountTest {
 		assertEquals(d.getDiscountPairList(), dlist);
 	}
 	
-	
-	//below are the tests for the constructor arguments
 	
 	//tests if the enddate can be greater than the start date. should always pass.
 	@Test
