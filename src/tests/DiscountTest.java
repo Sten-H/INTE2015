@@ -88,7 +88,7 @@ public class DiscountTest {
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testDiscountPairListFewerThanZero(){
+	public void testDiscountPairListEmpty(){
 		setupSimpleConstructor();
 		dlist = new ArrayList<DiscountPair>();
 		Discount d = new Discount(start, end, db, dlist);
