@@ -28,7 +28,7 @@ public class Order {
 		this.customer = customer;
 	}
 
-	//NOTE: SHOULD PROABLY BE PRIVATE
+	//NOTE: this method should probably be private, but is public for testing purposes
 	/**
 	 * gets all valid discounts for order
 	 * @param orderLineList, list of all products to be bought

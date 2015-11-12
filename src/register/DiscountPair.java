@@ -1,5 +1,10 @@
 package register;
 
+/**
+ * Class that combines a product with a number, to signify the number of 
+ * products. Used in the Discount-class.
+ *
+ */
 public class DiscountPair {
 	
 	private Product product;
